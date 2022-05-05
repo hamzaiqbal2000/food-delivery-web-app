@@ -1,7 +1,7 @@
 import React from "react";
 import Delivery from "../img/delivery.png";
 import HeroBg from "../img/heroBg.png";
-import I1 from "../img/i1.png";
+import { heroData } from "../utils/data";
 
 const HomeContainer = () => {
   return (
@@ -47,18 +47,31 @@ const HomeContainer = () => {
         <img
           src={HeroBg}
           alt="hero-bg"
-          className="ml-auto h-400 w-full lg:w-auto lg:h-650"
+          className="ml-auto h-420 w-full lg:w-auto lg:h-650"
         />
-        <div className="w-full h-full absolute top-0 -left-20 flex items-center justify-center px-32 py-4">
-          <div className="w-190 p-4 bg-cardOverlay backdrop-blur-md rounded-md flex flex-col items-center justify-center">
-            <img src={I1} className="w-40 -mt-20" alt="I1" />
-            <p className="text-base font-semibold text-textColor">
-              Chocolate Vanila
-            </p>
-            <p className="text-sm text-gray-500 font-semibold">
-              Chocolate & vanilla
-            </p>
-          </div>
+        <div className="w-full h-full absolute top-0 left-0 md:-left-20 flex items-center justify-center lg:px-16 py-4 gap-2 flex-wrap">
+          {heroData &&
+            heroData.map((n) => (
+              <div
+                key={n.id}
+                className="lg:w-190  p-4 bg-cardOverlay backdrop-blur-md rounded-3xl flex flex-col items-center justify-center"
+              >
+                <img
+                  src={n.imageSrc}
+                  className="w-20 lg:w-40 -mt-10 lg:-mt-20"
+                  alt="I1"
+                />
+                <p className="text-base lg:text-xl font-semibold text-textColor mt-2 lg:mt-4">
+                  {n.name}
+                </p>
+                <p className="text-[12px] lg:text-sm text-lighttextGray font-semibold my-1 lg:my-3">
+                  {n.dec}
+                </p>
+                <p className="text-sm font-semibold text-headingColor">
+                  <span className="text-xs text-red-600">$</span> {n.price}
+                </p>
+              </div>
+            ))}
         </div>
       </div>
     </section>
